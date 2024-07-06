@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import drinkImage from './drink.jpg';
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
 const getSingleDrink = async (id) => {
@@ -13,9 +15,8 @@ const getSingleDrink = async (id) => {
 
 const SingleDrinkPage = async ({ params }) => {
   const data = await getSingleDrink(params.id);
-  const title = data?.drinks[0]?.strDrink || 'Drink not found';
-  const imgSrc = data?.drinks[0]?.strDrinkThumb || '/no-image.jpg';
-  console.log(title, imgSrc);
+  const title = data?.drinks[0]?.strDrink;
+  const imgSrc = data?.drinks[0]?.strDrinkThumb;
   return (
     <div>
       <Link
@@ -24,11 +25,15 @@ const SingleDrinkPage = async ({ params }) => {
       >
         Back to drinks
       </Link>
-      <h1 className='text-4xl mb-8'>{title}</h1>
-      <img
+      <Image
         src={imgSrc}
+        width={300}
+        height={300}
+        className='w-48 h-48 rounded-lg shadow-lg mb-4'
+        priority
         alt={title}
       />
+      <h1 className='text-4xl mb-8'>{title}</h1>
     </div>
   );
 };

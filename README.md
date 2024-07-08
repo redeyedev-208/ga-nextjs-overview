@@ -1,37 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## NextJS App with Prisma, Dynamic Routing, and Render Cloud Services
+In this project we have set up a NextJs project to allow CRUD functionality. 
+With this project you can see how the standard counter example is being handled in NextJs. 
 
-## Getting Started
+We are also calling a drink API not that I am huge drinker it is just that the API is easy to use. 
+For our Prisma tab we won't be able to see anything in Production as this is only available in local development. 
+Routing we are validating and catching errors as needed. 
 
-First, run the development server:
+Visual displays of toasts are also used for the attempt in trying to click on the counter when it is at zero. 
+One great way to handle forms in React is via the new hook called "useFormStatus" which is pretty cool I think. 
+Feel free to pull down the code and have fun, with it. 
+___
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Packages
+To ensure the project will run make sure to pull down the code and run `npm install` this will make sure that all the needed packages are pulled and that your local environment has all the needed versions or NodeJS, React, NextJS and everything else. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Look inside the `json.config` file to see what packages are needed. 
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+<b>Prisma</b>
+The Prisma tab won't display anything in Production so you will need to run the following command: `npx prisma studio`
+With this command running and the project running you will now be able to see any newly added tasks that are in the db to display correctly. 
+You'll need to change the setting though as we are live in production, initially an `SQLite` db was used but for Production I went with `PostGres`. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+___
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# ga-nextjs-overview
+## External Services
+We are using Render which has a 30 day free tier before upgrading. I am really liking the layout of the service it is visually appealing and easy to use. 
+- [Render Cloud Hosting](https://render.com/)
+- [Vercel](https://vercel.com/)
+- [Prisma](https://www.prisma.io/)
+- [The Cocktail DB](https://www.thecocktaildb.com/api.php)

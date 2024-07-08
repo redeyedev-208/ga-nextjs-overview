@@ -21,16 +21,23 @@ export const createTask = async (formData) => {
   revalidatePath('/tasks');
 };
 
-export const createTaskCustom = async (formData) => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+export const createTaskCustom = async (prevState, formData) => {
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
 
   const content = formData.get('content');
-  await prisma.task.create({
-    data: {
-      content,
-    },
-  });
-  revalidatePath('/tasks');
+  try {
+    // Testing errors just add an s to the end of task and you'll see an error as expected.
+    // Reason being is that our model is called task and not tasks for the table name.
+    await prisma.task.create({
+      data: {
+        content,
+      },
+    });
+    revalidatePath('/tasks');
+    return { message: 'Task created successfully' };
+  } catch (error) {
+    return { message: 'An error occurred while creating the task' };
+  }
 };
 
 export const deleteTask = async (formData) => {

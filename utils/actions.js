@@ -2,6 +2,7 @@
 import prisma from '@/utils/db';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { z } from 'zod';
 
 export const getAllTasks = async () => {
   return await prisma.task.findMany({
@@ -25,7 +26,11 @@ export const createTaskCustom = async (prevState, formData) => {
   // await new Promise((resolve) => setTimeout(resolve, 2000));
 
   const content = formData.get('content');
+  const Task = z.object({
+    content: z.string().min(7),
+  });
   try {
+    Task.parse({ content });
     // Testing errors just add an s to the end of task and you'll see an error as expected.
     // Reason being is that our model is called task and not tasks for the table name.
     await prisma.task.create({
@@ -34,9 +39,10 @@ export const createTaskCustom = async (prevState, formData) => {
       },
     });
     revalidatePath('/tasks');
-    return { message: 'Task created successfully' };
+    return { message: 'success' };
   } catch (error) {
-    return { message: 'An error occurred while creating the task' };
+    console.log(error);
+    return { message: 'error' };
   }
 };
 

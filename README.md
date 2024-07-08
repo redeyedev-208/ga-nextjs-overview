@@ -14,7 +14,7 @@ ___
 ## Packages
 To ensure the project will run make sure to pull down the code and run `npm install` this will make sure that all the needed packages are pulled and that your local environment has all the needed versions or NodeJS, React, NextJS and everything else. 
 
-Look inside the `json.config` file to see what packages are needed. 
+Look inside the `package.json` file to see what packages are needed. 
 
 <b>Prisma</b>
 The Prisma tab won't display anything in Production so you will need to run the following command: `npx prisma studio`

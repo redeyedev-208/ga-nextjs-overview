@@ -7,7 +7,7 @@ const DeleteForm = ({ id }) => {
         name='id'
         value={id}
       />
-      <button className='btn btn-error btn-xs'>delete</button>
+      <button className='btn btn-error btn-xs capitalize'>delete</button>
     </form>
   );
 };
